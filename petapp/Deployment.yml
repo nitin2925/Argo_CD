@@ -15,8 +15,8 @@ spec:
       containers:
       - name: petapp
         image: nit2925docker/devops-repo:4d1fac82fec6ea571698109ae1748ad23308159f # You can specify a different version if needed
-      imagePullSecrets:
-      - name: regcred
         ports:
         - containerPort: 8080  # This should match the targetPort in the Service
+      imagePullSecrets:
+      - name: regcred
 
