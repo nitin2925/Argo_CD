@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: petapp-ingress
+  namespace: petapp
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  ingressClassName: nginx
+  rules:
+    - http:
+        paths:
+          - path: /  # Root path for accessing your service
+            pathType: Prefix
+            backend:
+              service:
+                name: petapp-service  # Name of the Kubernetes service
+                port:
+                  number: 8080
